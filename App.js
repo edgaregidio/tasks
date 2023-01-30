@@ -1,5 +1,4 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import Task from './src/pages/Task'
@@ -16,33 +15,24 @@ export default function App() {
           name="Task"
           component={Task}
           options={{
-            headerTintColor: '#f92e6a'
+            headerTintColor: '#9400d3'
           }}
         />
         <Stack.Screen
           name="NewTask"
           component={NewTask}
           options={{
-            headerTintColor: '#f92e6a'
+            headerTintColor: '#9400d3'
           }}
         />
         <Stack.Screen
           name="Details"
           component={Details}
           options={{
-            headerTintColor: '#f92e6a'
+            headerTintColor: '#9400d3'
           }}
         />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
