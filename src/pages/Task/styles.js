@@ -1,70 +1,79 @@
-import { StyleSheet } from 'react-native'
+import { TouchableOpacity } from 'react-native'
+import styled from 'styled-components/native'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fFF',
-    paddingRight: 25,
-    paddingLeft: 25
-  },
-  Tasks: {
-    // backgroundColor: '#f7f7f7',
-    // borderStyle: 'solid',
-    // borderWidth: 1,
-    // borderColor: '#9400d3',
-    width: '100%',
-    height: 60,
-    borderRadius: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 5
-  },
-  button: {
-    backgroundColor: '#f8f8f8',
-    width: '80%',
-    borderRadius: 50,
-    flexDirection: 'row',
-    alignItems: 'center'
-    // outline: 'none'
-  },
-  numberTask: {
-    margin: 15,
-    color: '#9400d3',
-    fontWeight: '700'
-  },
-  descriptionTask: {
-    width: '75%',
-    alignContent: 'flex-start',
-    // paddingHorizontal: 20,
-    borderRadius: 50,
-    marginRight: 15,
-    fontSize: 18,
-    color: '#9400d3'
-  },
-  deleteTasks: {
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#9400d3'
-  },
-  buttonNewTask: {
-    position: 'absolute',
-    width: 60,
-    height: 60,
-    bottom: 30,
-    right: 20,
-    borderRadius: 50,
-    backgroundColor: '#9400d3',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  iconButton: {
-    color: '#FFF',
-    fontSize: 25
-  }
-})
+export const Wrapper = styled.View`
+  background: ${props => props.theme.background};
+  flex: 1;
+  padding: 25px;
+`
 
-export default styles
+export const ContentInfoUser = styled.View`
+  margin-bottom: 20px;
+`
+
+export const Title = styled.Text`
+  color: ${props => props.theme.color};
+  font-size: 33px;
+`
+
+export const NameUser = styled.Text`
+  color: ${props => props.theme.color};
+  font-size: 22px;
+  font-weight: 300;
+`
+
+export const Tasks = styled.View`
+  background: #000;
+  width: 100%;
+  height: 120px;
+  border-radius: 16px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+`
+export const Button = styled.View`
+  background: #f8f8f8;
+  width: 80%;
+  border-radius: 8px;
+  flex-direction: row;
+  align-items: center;
+`
+
+export const NumberTask = styled.Text`
+  margin: 15px;
+  color: ${props => props.theme.color};
+  font-weight: 700;
+`
+
+export const DescriptionTask = styled.Text`
+  width: 75%;
+  align-content: flex-start;
+  border-radius: 8px;
+  margin-right: 2px;
+  font-size: 18px;
+  color: ${props => props.theme.color};
+`
+export const DeleteTasks = styled(TouchableOpacity)`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: ${props => props.theme.color};
+  align-items: center;
+  justify-content: center;
+`
+export const ButtonNewTask = styled(TouchableOpacity)`
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: ${props => props.theme.color};
+  border-radius: 50%;
+  right: 30px;
+  bottom: 30px;
+  justify-content: center;
+  align-items: center;
+`
+export const IconButton = styled.Text`
+  color: #fff;
+  font-size: 25px;
+`

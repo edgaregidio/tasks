@@ -9,7 +9,21 @@ import {
 
 import database from '../../config/firebaseconfig'
 import { MaterialIcons } from '@expo/vector-icons'
-import styles from './styles'
+// import styles from './styles'
+
+import {
+  Wrapper,
+  ContentInfoUser,
+  Title,
+  NameUser,
+  Tasks,
+  Button,
+  NumberTask,
+  DescriptionTask,
+  DeleteTasks,
+  ButtonNewTask,
+  IconButton
+} from './styles'
 
 const Task = ({ navigation }) => {
   const [tasks, setTasks] = useState([])
@@ -33,19 +47,22 @@ const Task = ({ navigation }) => {
   }, [])
 
   return (
-    <View style={styles.container}>
+    <Wrapper>
+      <ContentInfoUser>
+        <Title>Olá</Title>
+        <NameUser>Edgar Siqueira!</NameUser>
+      </ContentInfoUser>
       <FlatList
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         data={tasks}
         renderItem={({ item, index }) => {
           return (
-            <View style={styles.Tasks}>
+            <Tasks>
               <TouchableWithoutFeedback>
-                <View style={styles.button}>
-                  <Text style={styles.numberTask}>{index + 1} -</Text>
-                  <Text
-                    style={styles.descriptionTask}
+                <Button>
+                  <NumberTask>{index + 1} -</NumberTask>
+                  <DescriptionTask
                     selectable={false}
                     onPress={() => {
                       navigation.navigate('Details', {
@@ -55,30 +72,28 @@ const Task = ({ navigation }) => {
                     }}
                   >
                     {item.description}
-                  </Text>
-                </View>
+                  </DescriptionTask>
+                </Button>
               </TouchableWithoutFeedback>
-              <TouchableOpacity
-                style={styles.deleteTasks}
+              <DeleteTasks
                 onPress={() => {
                   deleteTask(item.id)
                 }}
               >
                 <MaterialIcons name="delete" size={25} color="#FFF" />
-              </TouchableOpacity>
-            </View>
+              </DeleteTasks>
+            </Tasks>
           )
         }}
       />
-      <TouchableOpacity
-        style={styles.buttonNewTask}
+      <ButtonNewTask
         onPress={() => {
           navigation.navigate('NewTask')
         }}
       >
-        <Text style={styles.iconButton}>+</Text>
-      </TouchableOpacity>
-    </View>
+        <IconButton>+</IconButton>
+      </ButtonNewTask>
+    </Wrapper>
   )
 }
 
