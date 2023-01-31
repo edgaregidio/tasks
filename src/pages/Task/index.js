@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 import {
   Text,
   View,
-  SafeAreaView,
   TouchableOpacity,
-  FlatList
+  FlatList,
+  TouchableWithoutFeedback
 } from 'react-native'
 
 import database from '../../config/firebaseconfig'
-import { FontAwesome } from '@expo/vector-icons'
+import { MaterialIcons } from '@expo/vector-icons'
 import styles from './styles'
 
 const Task = ({ navigation }) => {
@@ -32,29 +32,35 @@ const Task = ({ navigation }) => {
     <View style={styles.container}>
       <FlatList
         showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         data={tasks}
         renderItem={({ item }) => {
           return (
             <View style={styles.Tasks}>
+              <TouchableWithoutFeedback>
+                <View style={styles.button}>
+                  <Text
+                    style={styles.descriptionTask}
+                    selectable={false}
+                    onPress={() => {
+                      navigation.navigate('Details', {
+                        id: item.id,
+                        description: item.description
+                      })
+                    }}
+                  >
+                    {item.description}
+                  </Text>
+                </View>
+              </TouchableWithoutFeedback>
               <TouchableOpacity
                 style={styles.deleteTasks}
                 onPress={() => {
                   deleteTask(item.id)
                 }}
               >
-                <FontAwesome name="star" size={23} color="#9400d3" />
+                <MaterialIcons name="delete" size={25} color="#FFF" />
               </TouchableOpacity>
-              <Text
-                style={styles.descriptionTask}
-                onPress={() => {
-                  navigation.navigate('Details', {
-                    id: item.id,
-                    description: item.description
-                  })
-                }}
-              >
-                {item.description}
-              </Text>
             </View>
           )
         }}

@@ -4,13 +4,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fFF',
-    padding: 20
+    paddingRight: 25,
+    paddingLeft: 25
   },
   Tasks: {
-    backgroundColor: '#f7f7f7',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: '#9400d3',
+    // backgroundColor: '#f7f7f7',
+    // borderStyle: 'solid',
+    // borderWidth: 1,
+    // borderColor: '#9400d3',
     width: '100%',
     height: 60,
     borderRadius: 16,
@@ -19,9 +20,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 5
   },
-  deleteTasks: {
-    justifyContent: 'center',
-    paddingLeft: 15
+  button: {
+    backgroundColor: '#f8f8f8',
+    width: '80%',
+    borderRadius: 50
+    // outline: 'none'
   },
   descriptionTask: {
     width: '75%',
@@ -33,6 +36,14 @@ const styles = StyleSheet.create({
     marginRight: 15,
     fontSize: 18,
     color: '#9400d3'
+  },
+  deleteTasks: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#9400d3'
   },
   buttonNewTask: {
     position: 'absolute',

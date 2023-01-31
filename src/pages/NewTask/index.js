@@ -1,12 +1,40 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import React, { useState } from 'react'
+import { Text, View, TextInput, TouchableOpacity } from 'react-native'
+import { FontAwesome } from '@expo/vector-icons'
+import database from '../../config/firebaseconfig'
+import styles from './styles'
 
-// import { Container } from './styles';
+const NewTask = ({ navigation }) => {
+  const [description, setDescription] = useState(null)
+  const [status, setStatus] = useState(null)
 
-const NewTask = () => {
+  function addTask() {
+    database.collection('Tasks').add({
+      description: description,
+      status: status
+    })
+    navigation.navigate('Task')
+  }
+
   return (
-    <View>
-      <Text>Page NewTask</Text>
+    <View style={styles.container}>
+      <Text style={styles.labelNewTask}>Título da Task</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Ex: Estudar React"
+        onChangeText={setDescription}
+        value={description}
+      />
+      <TouchableOpacity
+        style={styles.buttonNewTask}
+        onPress={() => {
+          addTask()
+        }}
+      >
+        <Text style={styles.iconButton}>
+          <FontAwesome name="save" size={23} color="#FFF" />
+        </Text>
+      </TouchableOpacity>
     </View>
   )
 }
