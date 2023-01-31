@@ -23,16 +23,21 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#f8f8f8',
     width: '80%',
-    borderRadius: 50
+    borderRadius: 50,
+    flexDirection: 'row',
+    alignItems: 'center'
     // outline: 'none'
+  },
+  numberTask: {
+    margin: 15,
+    color: '#9400d3',
+    fontWeight: '700'
   },
   descriptionTask: {
     width: '75%',
     alignContent: 'flex-start',
-    padding: 12,
-    paddingHorizontal: 20,
+    // paddingHorizontal: 20,
     borderRadius: 50,
-    // marginBottom: 5,
     marginRight: 15,
     fontSize: 18,
     color: '#9400d3'

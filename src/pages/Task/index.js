@@ -38,11 +38,12 @@ const Task = ({ navigation }) => {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         data={tasks}
-        renderItem={({ item }) => {
+        renderItem={({ item, index }) => {
           return (
             <View style={styles.Tasks}>
               <TouchableWithoutFeedback>
                 <View style={styles.button}>
+                  <Text style={styles.numberTask}>{index + 1} -</Text>
                   <Text
                     style={styles.descriptionTask}
                     selectable={false}
