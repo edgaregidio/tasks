@@ -14,6 +14,10 @@ import styles from './styles'
 const Task = ({ navigation }) => {
   const [tasks, setTasks] = useState([])
 
+  tasks.sort((a, b) => {
+    return b.timestamp.toDate() - a.timestamp.toDate()
+  })
+
   function deleteTask(id) {
     database.collection('Tasks').doc(id).delete()
   }

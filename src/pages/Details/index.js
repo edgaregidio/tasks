@@ -10,7 +10,6 @@ const Details = ({ navigation, route }) => {
   const [descriptionEdit, setDescriptionEdit] = useState(
     route.params.description
   )
-  console.log('descriptionEdit', descriptionEdit)
   const idTask = route.params.id
 
   function editTask(description, id) {
