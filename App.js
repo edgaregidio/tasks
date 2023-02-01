@@ -19,7 +19,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Task">
           <Stack.Screen
-            name="Task"
+            name="Tasks"
             component={Task}
             options={{
               headerTintColor: '#9400d3'

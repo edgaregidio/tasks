@@ -1,46 +1,43 @@
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-export const Tasks = styled.View`
-  background: #000;
+export const CardTask = styled(TouchableOpacity)`
   width: 100%;
-  height: 120px;
-  border-radius: 16px;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 5px;
-`
-export const Button = styled.View`
-  background: #f8f8f8;
-  width: 80%;
-  border-radius: 8px;
-  flex-direction: row;
-  align-items: center;
-`
-
-export const NumberTask = styled.Text`
-  margin: 15px;
-  /* color: ${props => props.theme.color}; */
-  color: red;
-  font-weight: 700;
-`
-
-export const DescriptionTask = styled.Text`
-  width: 75%;
   align-content: flex-start;
   border-radius: 8px;
   margin-right: 2px;
   font-size: 18px;
-  /* color: ${props => props.theme.color}; */
-  color: red;
+  background: ${props => props.theme.cardList.background};
+  padding: 15px;
+  margin-bottom: 15px;
 `
+
+export const CardHeader = styled.View`
+  flex-direction: row;
+  margin-bottom: 5px;
+`
+export const TextTask = styled.Text`
+  color: ${props => props.theme.cardList.textTask.color};
+  font-size: 14px;
+  font-weight: 500;
+`
+export const NumberTask = styled.Text`
+  color: ${props => props.theme.cardList.color};
+  font-weight: 700;
+  font-size: 14px;
+`
+export const CardBody = styled.View`
+  margin-bottom: 5px;
+`
+export const NameTask = styled.Text`
+  font-size: 20px;
+  color: ${props => props.theme.cardList.color};
+  font-weight: 500;
+`
+export const CardBottom = styled.View`
+  align-items: flex-end;
+`
+
 export const DeleteTasks = styled(TouchableOpacity)`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
   /* background: ${props => props.theme.color}; */
-  color: red;
-  align-items: center;
-  justify-content: center;
 `

@@ -27,10 +27,11 @@ export const ButtonNewTask = styled(TouchableOpacity)`
   width: 60px;
   height: 60px;
   /* background: ${props => props.theme.color}; */
+  background: #9400d3;
   color: red;
   border-radius: 50%;
   right: 30px;
-  bottom: 30px;
+  top: 30px;
   justify-content: center;
   align-items: center;
 `
