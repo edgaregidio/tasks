@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 
-import database from '../../config/firebaseconfig'
+import firebase from '../../config/firebaseconfig'
 
 import { Container, Button, Input, Title } from './styles'
 
 const Details = ({ navigation, route }) => {
+  const database = firebase.firestore()
   const [descriptionEdit, setDescriptionEdit] = useState(
     route.params.description
   )

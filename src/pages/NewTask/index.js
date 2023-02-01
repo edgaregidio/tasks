@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import firebase from 'firebase'
 import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
-import database from '../../config/firebaseconfig'
+import firebase from '../../config/firebaseconfig'
 import { Whapper, TitleTask, Input, ButtonNewTask, TextButton } from './styles'
 
+// const firebase = firebase.firestore()
+
 const NewTask = ({ navigation }) => {
+  const database = firebase.firestore()
   const [description, setDescription] = useState(null)
   const [status, setStatus] = useState(null)
 

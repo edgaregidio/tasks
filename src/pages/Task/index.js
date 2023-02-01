@@ -7,9 +7,7 @@ import {
   TouchableWithoutFeedback
 } from 'react-native'
 
-import database from '../../config/firebaseconfig'
-// import { MaterialIcons } from '@expo/vector-icons'
-// import styles from './styles'
+import firebase from '../../config/firebaseconfig'
 
 import {
   Wrapper,
@@ -28,6 +26,7 @@ import CardList from '../../components/@core/CardList'
 
 const Task = ({ navigation }) => {
   const [tasks, setTasks] = useState([])
+  const database = firebase.firestore()
 
   tasks.sort((a, b) => {
     return b.timestamp.toDate() - a.timestamp.toDate()

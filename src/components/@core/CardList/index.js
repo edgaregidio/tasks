@@ -1,5 +1,5 @@
 import React from 'react'
-import database from '../../../config/firebaseconfig'
+import firebase from '../../../config/firebaseconfig'
 import { Text, TouchableWithoutFeedback } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 
@@ -15,6 +15,7 @@ import {
 } from './styles'
 
 const CardList = ({ navigation, item, index }) => {
+  const database = firebase.firestore()
   function deleteTask(id) {
     database.collection('Tasks').doc(id).delete()
   }
