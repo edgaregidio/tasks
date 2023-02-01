@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 
 import database from '../../config/firebaseconfig'
-import { MaterialIcons } from '@expo/vector-icons'
+// import { MaterialIcons } from '@expo/vector-icons'
 // import styles from './styles'
 
 import {
@@ -24,6 +24,7 @@ import {
   ButtonNewTask,
   IconButton
 } from './styles'
+import CardList from '../../components/@core/CardList'
 
 const Task = ({ navigation }) => {
   const [tasks, setTasks] = useState([])
@@ -31,10 +32,6 @@ const Task = ({ navigation }) => {
   tasks.sort((a, b) => {
     return b.timestamp.toDate() - a.timestamp.toDate()
   })
-
-  function deleteTask(id) {
-    database.collection('Tasks').doc(id).delete()
-  }
 
   useEffect(() => {
     database.collection('Tasks').onSnapshot(query => {
@@ -57,33 +54,7 @@ const Task = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
         data={tasks}
         renderItem={({ item, index }) => {
-          return (
-            <Tasks>
-              <TouchableWithoutFeedback>
-                <Button>
-                  <NumberTask>{index + 1} -</NumberTask>
-                  <DescriptionTask
-                    selectable={false}
-                    onPress={() => {
-                      navigation.navigate('Details', {
-                        id: item.id,
-                        description: item.description
-                      })
-                    }}
-                  >
-                    {item.description}
-                  </DescriptionTask>
-                </Button>
-              </TouchableWithoutFeedback>
-              <DeleteTasks
-                onPress={() => {
-                  deleteTask(item.id)
-                }}
-              >
-                <MaterialIcons name="delete" size={25} color="#FFF" />
-              </DeleteTasks>
-            </Tasks>
-          )
+          return <CardList navigation={navigation} item={item} index={index} />
         }}
       />
       <ButtonNewTask

@@ -23,7 +23,7 @@ export const Input = styled(TextInput)`
   border-bottom-color: #9400d3;
   margin-right: auto;
   margin-left: auto;
-  background: ${props => props.theme.inputNewTask.background};
+  background: ${props => props.theme.inputDefault.background};
   font-size: 18px;
 `
 export const TextButton = styled(TouchableOpacity)``

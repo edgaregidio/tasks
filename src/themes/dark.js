@@ -1,7 +1,9 @@
 export default {
-  inputNewTask: {
+  inputDefault: {
     background: '#777'
   },
-  background: '#333',
-  color: '#9400d3'
+  contentInfoUser: {
+    color: '#FFF'
+  },
+  background: '#202024'
 }
