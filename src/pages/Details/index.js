@@ -4,7 +4,7 @@ import { FontAwesome } from '@expo/vector-icons'
 
 import database from '../../config/firebaseconfig'
 
-import styles from './styles'
+import { Container, Button, Input, Title } from './styles'
 
 const Details = ({ navigation, route }) => {
   const [descriptionEdit, setDescriptionEdit] = useState(
@@ -20,25 +20,23 @@ const Details = ({ navigation, route }) => {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.labelNewTask}>Título da Task</Text>
-      <TextInput
-        style={styles.input}
+    <Container>
+      <Title>Título da Task</Title>
+      <Input
         placeholder="Ex: Estudar React"
         onChangeText={setDescriptionEdit}
         value={descriptionEdit}
       />
-      <TouchableOpacity
-        style={styles.buttonNewTask}
+      <Button
         onPress={() => {
           editTask(descriptionEdit, idTask)
         }}
       >
-        <Text style={styles.iconButton}>
+        <Text>
           <FontAwesome name="save" size={23} color="#FFF" />
         </Text>
-      </TouchableOpacity>
-    </View>
+      </Button>
+    </Container>
   )
 }
 

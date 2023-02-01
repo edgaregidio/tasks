@@ -3,7 +3,7 @@ import firebase from 'firebase'
 import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import database from '../../config/firebaseconfig'
-import styles from './styles'
+import { Whapper, TitleTask, Input, ButtonNewTask, TextButton } from './styles'
 
 const NewTask = ({ navigation }) => {
   const [description, setDescription] = useState(null)
@@ -34,25 +34,23 @@ const NewTask = ({ navigation }) => {
     })
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.labelNewTask}>Título da Task</Text>
-      <TextInput
-        style={styles.input}
+    <Whapper>
+      <TitleTask>Título da Task</TitleTask>
+      <Input
         placeholder="Ex: Estudar React"
         onChangeText={setDescription}
         value={description}
       />
-      <TouchableOpacity
-        style={styles.buttonNewTask}
+      <TextButton
         onPress={() => {
           addTask()
         }}
       >
-        <Text style={styles.iconButton}>
+        <ButtonNewTask>
           <FontAwesome name="save" size={23} color="#FFF" />
-        </Text>
-      </TouchableOpacity>
-    </View>
+        </ButtonNewTask>
+      </TextButton>
+    </Whapper>
   )
 }
 
