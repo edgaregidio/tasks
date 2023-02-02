@@ -3,8 +3,8 @@ import { Platform, View } from 'react-native'
 
 import firebase from '../../config/firebaseconfig'
 
-import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons'
-import { Ionicons } from '@expo/vector-icons'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import {
   Container,
   HeaderLogin,
@@ -26,7 +26,8 @@ import {
   IconPassword
 } from './styles'
 
-const Login = ({ navigation }) => {
+const Login = ({ navigation, route }) => {
+  console.log('route Login', route)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorLogin, setErrorLogin] = useState('')
@@ -37,13 +38,17 @@ const Login = ({ navigation }) => {
       .signInWithEmailAndPassword(email, password)
       .then(userCredential => {
         let user = userCredential.user
-        console.log('user', user)
-        navigation.navigate('Task', { idUser: user.uid })
+        let name = user.displayName
+        console.log('Nome do usuário:', name)
+        // console.log('user', user)
+        // navigation.navigate('Task', { idUser: user.uid })
+        navigation.navigate('Task', { idUser: user.uid, userName: name })
       })
       .catch(error => {
         setErrorLogin(true)
         let errorCode = error.code
         let errorMessage = error.message
+        console.error(error)
       })
   }
 
@@ -58,67 +63,76 @@ const Login = ({ navigation }) => {
 
   return (
     <Container behavio={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <HeaderLogin>
-        <TitleLogin>Bem-vindo ao</TitleLogin>
-        <TitleLoginApp>Tasks</TitleLoginApp>
-        <TextDescriptonLogin>Acesse para continuar</TextDescriptonLogin>
-      </HeaderLogin>
-      <BodyLogin>
-        <WrapperInput>
-          <ContentIconLogin>
-            <IconEmail name="mail" size={24} />
-          </ContentIconLogin>
-          <Input
-            placeholder="Digite seu email"
-            text="text"
-            onChangeText={text => setEmail(text)}
-            value={email}
-          />
-        </WrapperInput>
-        <WrapperInput>
-          <ContentIconLogin>
-            <IconPassword name="lock" size={24} />
-          </ContentIconLogin>
-          <Input
-            placeholder={'Digite sua senha'}
-            secureTextEntry={true}
-            text="text"
-            onChangeText={text => setPassword(text.toLowerCase())}
-            value={password}
-          />
-        </WrapperInput>
-        {errorLogin ? (
-          <ButtonLoginError>
-            <MaterialCommunityIcons
-              name="alert-circle"
-              size={20}
-              color="#bbb"
+      <KeyboardAwareScrollView
+        contentContainerStyle={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%'
+        }}
+      >
+        <HeaderLogin>
+          <TitleLogin>Bem-vindo ao</TitleLogin>
+          <TitleLoginApp>Tasks</TitleLoginApp>
+          <TextDescriptonLogin>Acesse para continuar</TextDescriptonLogin>
+        </HeaderLogin>
+        <BodyLogin>
+          <WrapperInput>
+            <ContentIconLogin>
+              <IconEmail name="mail" size={24} />
+            </ContentIconLogin>
+            <Input
+              placeholder="Digite seu email"
+              text="text"
+              onChangeText={text => setEmail(text.toLowerCase())}
+              value={email}
             />
-            <Alert>Email ou senha invalido!</Alert>
-          </ButtonLoginError>
-        ) : (
-          <View />
-        )}
+          </WrapperInput>
+          <WrapperInput>
+            <ContentIconLogin>
+              <IconPassword name="lock" size={24} />
+            </ContentIconLogin>
+            <Input
+              placeholder={'Digite sua senha'}
+              secureTextEntry={true}
+              text="text"
+              onChangeText={text => setPassword(text)}
+              value={password}
+            />
+          </WrapperInput>
+          {errorLogin ? (
+            <ButtonLoginError>
+              <MaterialCommunityIcons
+                name="alert-circle"
+                size={20}
+                color="#bbb"
+              />
+              <Alert>Email ou senha invalido!</Alert>
+            </ButtonLoginError>
+          ) : (
+            <View />
+          )}
 
-        {email === '' || password === '' ? (
-          <ButtonLogin disabled={true}>
-            <TextLogin>Login</TextLogin>
-          </ButtonLogin>
-        ) : (
-          <ButtonLogin onPress={loginFirebase}>
-            <TextLogin>Login</TextLogin>
-          </ButtonLogin>
-        )}
+          {email === '' || password === '' ? (
+            <ButtonLogin disabled={true}>
+              <TextLogin>Login</TextLogin>
+            </ButtonLogin>
+          ) : (
+            <ButtonLogin onPress={loginFirebase}>
+              <TextLogin>Login</TextLogin>
+            </ButtonLogin>
+          )}
 
-        <BottomLogin>
-          <TextRegister>Não tem uma conta?</TextRegister>
-          <TextRegisterClick onPress={() => navigation.navigate('Register')}>
-            Cadastre aqui!
-          </TextRegisterClick>
-        </BottomLogin>
-      </BodyLogin>
+          <BottomLogin>
+            <TextRegister>Não tem uma conta?</TextRegister>
+            <TextRegisterClick onPress={() => navigation.navigate('Register')}>
+              Cadastre aqui!
+            </TextRegisterClick>
+          </BottomLogin>
+        </BodyLogin>
 
-      <View style={{ height: 100 }} />
+        <View style={{ height: 100 }} />
+      </KeyboardAwareScrollView>
     </Container>
   )
 }

@@ -8,6 +8,7 @@ import Task from './src/pages/Task'
 import NewTask from './src/pages/NewTask'
 import Details from './src/pages/Details'
 import Register from './src/pages/Register'
+
 import Login from './src/pages/Login'
 
 import themes from './src/themes'

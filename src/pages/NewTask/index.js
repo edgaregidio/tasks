@@ -7,7 +7,6 @@ import { Whapper, TitleTask, Input, ButtonNewTask, TextButton } from './styles'
 // const firebase = firebase.firestore()
 
 const NewTask = ({ navigation, route }) => {
-  // console.log('route', route)
   const database = firebase.firestore()
   const [description, setDescription] = useState(null)
   const [status, setStatus] = useState(null)

@@ -2,7 +2,8 @@ import {
   Platform,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  ScrollView
 } from 'react-native'
 import styled from 'styled-components/native'
 import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons'
@@ -13,6 +14,10 @@ export const Container = styled(KeyboardAvoidingView)`
   align-items: center;
   justify-content: center;
   padding: ${Platform.OS === 'ios' ? 0 : 50};
+`
+export const Teste = styled(ScrollView)`
+  background: red;
+  align-items: center;
 `
 export const HeaderRegister = styled.View`
   align-items: center;
@@ -63,7 +68,14 @@ export const Input = styled(TextInput)`
   font-size: 16px;
   color: ${props => props.theme.primaryColors.color};
   font-weight: 500;
-  text-transform: uppercase;
+`
+export const InputName = styled(TextInput)`
+  height: 70px;
+  width: 80%;
+  font-size: 16px;
+  color: ${props => props.theme.primaryColors.color};
+  font-weight: 500;
+  text-transform: capitalize;
 `
 export const ButtonRegisterError = styled.View`
   flex-direction: row;
@@ -80,7 +92,7 @@ export const ButtonRegister = styled(TouchableOpacity)`
   background: #9400d3;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 331.5px;
   height: 60px;
   border-radius: 8px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
@@ -94,9 +106,6 @@ export const TextInputRegister = styled.Text`
 `
 export const BottomRegister = styled.View`
   width: 100%;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
   flex-direction: row;
 `
 export const TextRegister = styled.Text`

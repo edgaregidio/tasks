@@ -14,8 +14,6 @@ import {
 } from './styles'
 
 const CardList = ({ navigation, route, item, index }) => {
-  console.log('route aqui', route)
-
   const database = firebase.firestore()
   function deleteTask(id) {
     database.collection(route.params.idUser).doc(id).delete()

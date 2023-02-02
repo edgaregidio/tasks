@@ -18,7 +18,11 @@ import {
 import CardList from '../../components/@core/CardList'
 
 const Task = ({ navigation, route }) => {
+  console.log('route task', route)
+
   const [tasks, setTasks] = useState([])
+  const [userName, setUserName] = useState(route.params.userName)
+
   const database = firebase.firestore()
 
   tasks.sort((a, b) => {
@@ -28,8 +32,10 @@ const Task = ({ navigation, route }) => {
   useEffect(() => {
     database.collection(route.params.idUser).onSnapshot(query => {
       const list = []
+      console.log('list', list)
       query.forEach(doc => {
         list.push({ ...doc.data(), id: doc.id })
+        console.log('list2', list)
       })
       setTasks(list)
     })
@@ -52,7 +58,7 @@ const Task = ({ navigation, route }) => {
       <ContentHeaderTask>
         <ContentInfoUser>
           <Title>Olá</Title>
-          <NameUser>Edgar Siqueira!</NameUser>
+          <NameUser>{userName}</NameUser>
         </ContentInfoUser>
 
         <WrapperButtons>

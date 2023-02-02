@@ -85,7 +85,7 @@ export const ButtonLogin = styled(TouchableOpacity)`
   background: #9400d3;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 331.5px;
   height: 60px;
   border-radius: 8px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
@@ -99,9 +99,6 @@ export const TextLogin = styled.Text`
 `
 export const BottomLogin = styled.View`
   width: 100%;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
   flex-direction: row;
 `
 export const TextRegister = styled.Text`
