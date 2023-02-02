@@ -14,7 +14,7 @@ const Details = ({ navigation, route }) => {
   const idTask = route.params.id
 
   function editTask(description, id) {
-    database.collection('Tasks').doc(id).update({
+    database.collection(route.params.idUser).doc(id).update({
       description: descriptionEdit
     })
     navigation.navigate('Task')

@@ -1,5 +1,15 @@
 export default {
+  primaryColors: {
+    background: '#FFF',
+    color: '#9400d3'
+  },
+  secondyColors: {
+    color: '#444'
+  },
   inputDefault: {
+    background: '#f7f7f7'
+  },
+  inputLoginAndRegister: {
     background: '#f7f7f7'
   },
   contentInfoUser: {
@@ -12,5 +22,8 @@ export default {
       color: '#666'
     }
   },
-  background: '#FFF'
+  buttonLogout: {
+    background: '#999',
+    color: '#FFF'
+  }
 }

@@ -3,11 +3,11 @@ import styled from 'styled-components/native'
 
 export const Container = styled.View`
   flex: 1;
-  background: ${props => props.theme.background};
+  background: ${props => props.theme.primaryColors.background};
   padding: 20px;
 `
 export const Title = styled.Text`
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.primaryColors.color};
   font-size: 20px;
   font-weight: 500;
   width: 90%;
@@ -38,17 +38,3 @@ export const Button = styled(TouchableOpacity)`
   justify-content: center;
   align-items: center;
 `
-//   buttonNewTask: {
-//     backgroundColor: '#9400d3',
-//     height: 50,
-//     width: '90%',
-//     marginRight: 'auto',
-//     marginLeft: 'auto',
-//     borderRadius: 50,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     marginTop: 20
-//   }
-// })
-
-// export default styles

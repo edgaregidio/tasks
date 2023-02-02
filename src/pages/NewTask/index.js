@@ -6,7 +6,8 @@ import { Whapper, TitleTask, Input, ButtonNewTask, TextButton } from './styles'
 
 // const firebase = firebase.firestore()
 
-const NewTask = ({ navigation }) => {
+const NewTask = ({ navigation, route }) => {
+  // console.log('route', route)
   const database = firebase.firestore()
   const [description, setDescription] = useState(null)
   const [status, setStatus] = useState(null)
@@ -14,19 +15,19 @@ const NewTask = ({ navigation }) => {
   function addTask() {
     firebase
       .firestore()
-      .collection('Tasks')
+      .collection(route.params.idUser)
       .add({
         description: description,
         status: status,
         timestamp: firebase.firestore.Timestamp.fromDate(new Date())
       })
       .then(() => {
-        navigation.navigate('Task')
+        navigation.navigate('Task', { idUser: route.params.idUser })
       })
   }
 
   database
-    .collection('Tasks')
+    .collection(route.params.idUser)
     .orderBy('timestamp', 'desc')
     .get()
     .then(querySnapshot => {

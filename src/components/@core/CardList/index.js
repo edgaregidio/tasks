@@ -1,6 +1,5 @@
 import React from 'react'
 import firebase from '../../../config/firebaseconfig'
-import { Text, TouchableWithoutFeedback } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 
 import {
@@ -14,10 +13,12 @@ import {
   CardBottom
 } from './styles'
 
-const CardList = ({ navigation, item, index }) => {
+const CardList = ({ navigation, route, item, index }) => {
+  console.log('route aqui', route)
+
   const database = firebase.firestore()
   function deleteTask(id) {
-    database.collection('Tasks').doc(id).delete()
+    database.collection(route.params.idUser).doc(id).delete()
   }
   return (
     <CardTask
@@ -25,7 +26,8 @@ const CardList = ({ navigation, item, index }) => {
       onPress={() => {
         navigation.navigate('Details', {
           id: item.id,
-          description: item.description
+          description: item.description,
+          idUser: route.params.idUser
         })
       }}
     >

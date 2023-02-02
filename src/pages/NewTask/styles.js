@@ -2,12 +2,12 @@ import { TextInput, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 export const Whapper = styled.View`
-  background: ${props => props.theme.background};
+  background: ${props => props.theme.primaryColors.background};
   flex: 1;
   padding: 20px;
 `
 export const TitleTask = styled.Text`
-  color: ${props => props.theme.color};
+  color: ${props => props.theme.primaryColors.color};
   font-size: 20px;
   font-weight: 500;
   width: 90%;
